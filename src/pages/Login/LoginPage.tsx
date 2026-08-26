@@ -4,6 +4,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import { IS_DEMO_MODE, IS_CAREGIVER } from '../../services/config';
 import { describeError } from '../../services/api';
 import { useAuth } from '../../app/providers/AuthProvider';
+import { sendOtp, verifyOtp } from '../../services/auth';
 import { Button } from '../../components/buttons/Button';
 import { Field } from '../../components/buttons/Controls';
 import { Icon } from '../../components/icons/Icon';
@@ -58,43 +59,73 @@ const CARED_FEATURES: { icon: IconName; title: string; desc: string }[] = [
 
 const FEATURES = IS_CAREGIVER ? CAREGIVER_FEATURES : CARED_FEATURES;
 
+type AuthStep = 'login' | 'register' | 'verify-otp';
+
 export function LoginPage() {
   const { user, signIn, register, signingIn } = useAuth();
   const navigate = useNavigate();
-  const [mode, setMode] = useState<'login' | 'register'>('login');
+  const [step, setStep] = useState<AuthStep>('login');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [otpCode, setOtpCode] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [otpSending, setOtpSending] = useState(false);
+  const [otpVerifying, setOtpVerifying] = useState(false);
+  const [otpResendTimer, setOtpResendTimer] = useState(0);
 
   if (user) return <Navigate to="/dashboard" replace />;
+
+  const startOtpFlow = async () => {
+    setOtpSending(true);
+    setError(null);
+    try {
+      await sendOtp(email);
+      setStep('verify-otp');
+      setOtpResendTimer(60);
+      const iv = setInterval(() => setOtpResendTimer((t) => { if (t <= 1) { clearInterval(iv); return 0; } return t - 1; }), 1000);
+    } catch (err) {
+      setError(describeError(err));
+    } finally {
+      setOtpSending(false);
+    }
+  };
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setError(null);
     try {
-      if (mode === 'register') {
-        if (!name.trim()) {
-          setError('Please enter your name.');
-          return;
-        }
+      if (step === 'register') {
+        if (!name.trim()) { setError('Please enter your name.'); return; }
         await register(name.trim(), email, password);
-      } else {
-        await signIn(email, password);
+        await startOtpFlow();
+        return;
       }
+      if (step === 'verify-otp') {
+        setOtpVerifying(true);
+        await verifyOtp(email, otpCode);
+        await signIn(email, password);
+        navigate('/dashboard', { replace: true });
+        return;
+      }
+      await signIn(email, password);
       navigate('/dashboard', { replace: true });
     } catch (err) {
-      setError(
-        err instanceof Error && err.message
-          ? err.message
-          : describeError(err),
-      );
+      const msg = err instanceof Error && err.message ? err.message : describeError(err);
+      if (typeof err === 'object' && err !== null && 'status' in err && (err as { status?: number }).status === 403) {
+        await startOtpFlow();
+        return;
+      }
+      setError(msg);
+    } finally {
+      setOtpVerifying(false);
     }
   };
 
+  const isRegister = step === 'register';
+  const isVerify = step === 'verify-otp';
   const roleLabel = IS_CAREGIVER ? 'Caregiver Console' : 'Cared Person Portal';
-  const isRegister = mode === 'register';
 
   return (
     <div className="login-page">
@@ -140,13 +171,17 @@ export function LoginPage() {
           </span>
 
           <div>
-            <h1>{isRegister ? 'Create account' : 'Sign in'}</h1>
+            <h1>
+              {isVerify ? 'Verify your email' : isRegister ? 'Create account' : 'Sign in'}
+            </h1>
             <p style={{ color: 'var(--text-secondary)', marginTop: 4 }}>
-              {isRegister
-                ? `Set up your ${IS_CAREGIVER ? 'caregiver' : 'cared person'} account.`
-                : IS_CAREGIVER
-                  ? 'For family members and caregivers.'
-                  : 'For the person receiving care.'}
+              {isVerify
+                ? `We sent a 6-digit code to ${email}`
+                : isRegister
+                  ? `Set up your ${IS_CAREGIVER ? 'caregiver' : 'cared person'} account.`
+                  : IS_CAREGIVER
+                    ? 'For family members and caregivers.'
+                    : 'For the person receiving care.'}
             </p>
           </div>
 
@@ -165,84 +200,124 @@ export function LoginPage() {
             </p>
           )}
 
-          {isRegister && (
-            <Field label="Full name" htmlFor="login-name">
-              <input
-                id="login-name"
-                className="input"
-                type="text"
-                autoComplete="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="Your full name"
-              />
-            </Field>
+          {isVerify ? (
+            <>
+              <Field label="Verification code" htmlFor="login-otp">
+                <input
+                  id="login-otp"
+                  className="input"
+                  type="text"
+                  inputMode="numeric"
+                  autoComplete="one-time-code"
+                  value={otpCode}
+                  onChange={(e) => setOtpCode(e.target.value.replace(/\D/g, '').slice(0, 6))}
+                  placeholder="000000"
+                  style={{ letterSpacing: '0.3em', fontSize: '1.25rem', textAlign: 'center', fontFamily: 'monospace' }}
+                  autoFocus
+                />
+              </Field>
+
+              <Button type="submit" size="lg" fullWidth loading={otpVerifying}>
+                Verify & Sign in
+              </Button>
+
+              <p className="login-footer">
+                {otpResendTimer > 0 ? (
+                  <>Resend code in {otpResendTimer}s</>
+                ) : (
+                  <button
+                    type="button"
+                    style={{ color: 'var(--accent)', fontWeight: 600, textDecoration: 'underline', background: 'none', border: 'none', cursor: 'pointer', font: 'inherit' }}
+                    onClick={startOtpFlow}
+                    disabled={otpSending}
+                  >
+                    {otpSending ? 'Sending...' : 'Resend code'}
+                  </button>
+                )}
+              </p>
+            </>
+          ) : (
+            <>
+              {isRegister && (
+                <Field label="Full name" htmlFor="login-name">
+                  <input
+                    id="login-name"
+                    className="input"
+                    type="text"
+                    autoComplete="name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="Your full name"
+                  />
+                </Field>
+              )}
+
+              <Field label="Email" htmlFor="login-email">
+                <input
+                  id="login-email"
+                  className="input"
+                  type="email"
+                  autoComplete="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="you@example.com"
+                />
+              </Field>
+
+              <Field label="Password" htmlFor="login-password">
+                <div className="password-wrap">
+                  <input
+                    id="login-password"
+                    className="input"
+                    type={showPassword ? 'text' : 'password'}
+                    autoComplete={isRegister ? 'new-password' : 'current-password'}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="Your password"
+                  />
+                  <button
+                    type="button"
+                    className="password-toggle"
+                    aria-label={showPassword ? 'Hide password' : 'Show password'}
+                    aria-pressed={showPassword}
+                    onClick={() => setShowPassword((v) => !v)}
+                  >
+                    <Icon name={showPassword ? 'eye-off' : 'eye'} size={18} />
+                  </button>
+                </div>
+              </Field>
+
+              <Button type="submit" size="lg" fullWidth loading={signingIn || otpSending}>
+                {isRegister ? 'Create account & verify email' : 'Sign in'}
+              </Button>
+
+              <p className="login-footer">
+                {isRegister ? (
+                  <>
+                    Already have an account?{' '}
+                    <button
+                      type="button"
+                      style={{ color: 'var(--accent)', fontWeight: 600, textDecoration: 'underline', background: 'none', border: 'none', cursor: 'pointer', font: 'inherit' }}
+                      onClick={() => { setStep('login'); setError(null); }}
+                    >
+                      Sign in
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    Don't have an account?{' '}
+                    <button
+                      type="button"
+                      style={{ color: 'var(--accent)', fontWeight: 600, textDecoration: 'underline', background: 'none', border: 'none', cursor: 'pointer', font: 'inherit' }}
+                      onClick={() => { setStep('register'); setError(null); }}
+                    >
+                      Create one
+                    </button>
+                  </>
+                )}
+              </p>
+            </>
           )}
-
-          <Field label="Email" htmlFor="login-email">
-            <input
-              id="login-email"
-              className="input"
-              type="email"
-              autoComplete="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="you@example.com"
-            />
-          </Field>
-
-          <Field label="Password" htmlFor="login-password">
-            <div className="password-wrap">
-              <input
-                id="login-password"
-                className="input"
-                type={showPassword ? 'text' : 'password'}
-                autoComplete={isRegister ? 'new-password' : 'current-password'}
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Your password"
-              />
-              <button
-                type="button"
-                className="password-toggle"
-                aria-label={showPassword ? 'Hide password' : 'Show password'}
-                aria-pressed={showPassword}
-                onClick={() => setShowPassword((v) => !v)}
-              >
-                <Icon name={showPassword ? 'eye-off' : 'eye'} size={18} />
-              </button>
-            </div>
-          </Field>
-
-          <Button type="submit" size="lg" fullWidth loading={signingIn}>
-            {isRegister ? 'Create account' : 'Sign in'}
-          </Button>
-
-          <p className="login-footer">
-            {isRegister ? (
-              <>
-                Already have an account?{' '}
-                <button
-                  type="button"
-                  style={{ color: 'var(--accent)', fontWeight: 600, textDecoration: 'underline', background: 'none', border: 'none', cursor: 'pointer', font: 'inherit' }}
-                  onClick={() => { setMode('login'); setError(null); }}
-                >
-                  Sign in
-                </button>
-              </>
-            ) : (
-              <>
-                Don't have an account?{' '}
-                <button
-                  type="button"
-                  style={{ color: 'var(--accent)', fontWeight: 600, textDecoration: 'underline', background: 'none', border: 'none', cursor: 'pointer', font: 'inherit' }}
-                  onClick={() => { setMode('register'); setError(null); }}
-                >
-                  Create one
-                </button>
-              </>
-            )}
-          </p>
         </form>
       </div>
     </div>

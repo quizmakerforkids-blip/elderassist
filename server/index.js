@@ -3,15 +3,76 @@ import cors from 'cors';
 import { readFileSync, writeFileSync, existsSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import { createTransport } from 'nodemailer';
 import { chat, chatAsync, reloadKnowledge, getStats, setDb } from './ai/chat.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
 const DATA_FILE = join(__dirname, 'data.json');
+const API_PROXY = process.env.API_PROXY || '';
+
+// --------------- email (Gmail OTP) ---------------
+
+const SMTP_HOST     = process.env.SMTP_HOST || 'smtp.gmail.com';
+const SMTP_PORT     = Number(process.env.SMTP_PORT || 465);
+const SMTP_USER     = process.env.SMTP_USER || '';
+const SMTP_PASS     = process.env.SMTP_PASS || '';
+const SMTP_FROM     = process.env.SMTP_FROM || SMTP_USER || 'ElderAssist <noreply@elderassist.app>';
+const HAS_SMTP      = Boolean(SMTP_USER && SMTP_PASS);
+
+let transporter = null;
+if (HAS_SMTP) {
+  transporter = createTransport({ host: SMTP_HOST, port: SMTP_PORT, secure: SMTP_PORT === 465, auth: { user: SMTP_USER, pass: SMTP_PASS } });
+}
+
+// OTP store: { email: { code, expiresAt } }
+const otpStore = new Map();
+function generateOTP() { return String(Math.floor(100000 + Math.random() * 900000)); }
+function otpExpiry() { return Date.now() + 10 * 60 * 1000; } // 10 minutes
+
+async function sendOTPEmail(email, code) {
+  if (HAS_SMTP && transporter) {
+    await transporter.sendMail({
+      from: SMTP_FROM,
+      to: email,
+      subject: 'ElderAssist — Your Verification Code',
+      text: `Your ElderAssist verification code is: ${code}\n\nThis code expires in 10 minutes.`,
+      html: `<div style="font-family:sans-serif;max-width:400px;margin:0 auto;padding:32px;background:#f8f7f4;border-radius:12px;">
+        <h2 style="color:#0077b6;margin:0 0 16px;">ElderAssist</h2>
+        <p style="font-size:15px;color:#334155;">Your verification code is:</p>
+        <div style="font-size:32px;font-weight:800;letter-spacing:8px;color:#0077b6;text-align:center;padding:16px 0;">${code}</div>
+        <p style="font-size:13px;color:#94a3b8;">This code expires in 10 minutes. If you did not request this, ignore this email.</p>
+      </div>`,
+    });
+  } else {
+    console.log(`\n====== VERIFICATION CODE for ${email}: ${code} ======\n`);
+  }
+}
 
 const app = express();
 app.use(cors({ origin: true }));
 app.use(express.json({ limit: '50mb' }));
+
+// --------------- API proxy (cared service → caregiver service) ---------------
+if (API_PROXY) {
+  const proxyBase = API_PROXY.replace(/\/+$/, '');
+  app.all('/api/{*splat}', async (req, res) => {
+    try {
+      const targetUrl = `${proxyBase}${req.originalUrl}`;
+      const fetchOpts = { method: req.method, headers: { ...req.headers, host: new URL(proxyBase).host }, signal: AbortSignal.timeout(30000) };
+      if (!['GET', 'HEAD'].includes(req.method)) fetchOpts.body = JSON.stringify(req.body);
+      const proxyRes = await fetch(targetUrl, fetchOpts);
+      const contentType = proxyRes.headers.get('content-type') || 'application/json';
+      res.status(proxyRes.status).set('content-type', contentType);
+      if (contentType.includes('json')) { res.json(await proxyRes.json()); }
+      else { res.send(await proxyRes.text()); }
+    } catch (err) {
+      console.error('Proxy error:', err);
+      res.status(502).json({ error: 'API proxy unavailable.' });
+    }
+  });
+  console.log(`API proxy active → ${API_PROXY}`);
+}
 
 // --------------- data store ---------------
 
@@ -81,6 +142,7 @@ app.post('/api/v1/auth/register', (req, res) => {
       email: email.toLowerCase(),
       password,
       role,
+      emailVerified: false,
       linkedCaregiverId: null,
       linkedCaregiverName: null,
       createdAt: new Date().toISOString(),
@@ -125,11 +187,48 @@ app.post('/api/v1/auth/login', (req, res) => {
     if (!user) {
       return res.status(401).json({ error: 'Invalid email or password.' });
     }
+    if (user.emailVerified === false) {
+      return res.status(403).json({ error: 'Please verify your email before signing in.', needsVerification: true });
+    }
     const { password: _, ...safe } = user;
     return res.json(safe);
   } catch (err) {
     console.error('Login error:', err);
     return res.status(500).json({ error: 'Internal server error.' });
+  }
+});
+
+// --------------- OTP email verification ---------------
+
+app.post('/api/v1/auth/send-otp', async (req, res) => {
+  try {
+    const { email } = req.body || {};
+    if (!email) return res.status(400).json({ error: 'Email is required.' });
+    const code = generateOTP();
+    otpStore.set(email.toLowerCase(), { code, expiresAt: otpExpiry() });
+    await sendOTPEmail(email, code);
+    return res.json({ ok: true, message: 'Verification code sent.' });
+  } catch (err) {
+    console.error('Send OTP error:', err);
+    return res.status(500).json({ error: 'Failed to send verification code.' });
+  }
+});
+
+app.post('/api/v1/auth/verify-otp', (req, res) => {
+  try {
+    const { email, code } = req.body || {};
+    if (!email || !code) return res.status(400).json({ error: 'Email and code are required.' });
+    const entry = otpStore.get(email.toLowerCase());
+    if (!entry) return res.status(400).json({ error: 'No verification code requested for this email.' });
+    if (Date.now() > entry.expiresAt) { otpStore.delete(email.toLowerCase()); return res.status(400).json({ error: 'Verification code has expired. Please request a new one.' }); }
+    if (entry.code !== code) return res.status(400).json({ error: 'Incorrect verification code.' });
+    otpStore.delete(email.toLowerCase());
+    const user = db.users.find(u => u.email.toLowerCase() === email.toLowerCase());
+    if (user) { user.emailVerified = true; saveData(db); }
+    return res.json({ ok: true, message: 'Email verified successfully.' });
+  } catch (err) {
+    console.error('Verify OTP error:', err);
+    return res.status(500).json({ error: 'Verification failed.' });
   }
 });
 
@@ -697,20 +796,28 @@ app.get('/api/v1/locations/:userId', (req, res) => {
 // --- Serve static frontends (production / Render) ---
 const caregiverDist = join(ROOT, 'dist', 'caregiver');
 const caredDist     = join(ROOT, 'dist', 'cared');
+const APP_ROLE      = (process.env.APP_ROLE || '').toLowerCase();
 
-if (existsSync(caregiverDist)) {
-  app.use('/caregiver', express.static(caregiverDist));
-  app.get('/caregiver/{*splat}', (_, res) => res.sendFile(join(caregiverDist, 'index.html')));
+if (APP_ROLE === 'caregiver' && existsSync(caregiverDist)) {
+  app.use(express.static(caregiverDist));
+  app.get('/{*splat}', (_, res) => res.sendFile(join(caregiverDist, 'index.html')));
+} else if (APP_ROLE === 'cared' && existsSync(caredDist)) {
+  app.use(express.static(caredDist));
+  app.get('/{*splat}', (_, res) => res.sendFile(join(caredDist, 'index.html')));
+} else {
+  // Local dev / combined: both frontends under prefixes
+  if (existsSync(caregiverDist)) {
+    app.use('/caregiver', express.static(caregiverDist));
+    app.get('/caregiver/{*splat}', (_, res) => res.sendFile(join(caregiverDist, 'index.html')));
+  }
+  if (existsSync(caredDist)) {
+    app.use('/cared', express.static(caredDist));
+    app.get('/cared/{*splat}', (_, res) => res.sendFile(join(caredDist, 'index.html')));
+  }
+  app.get('/', (_, res) => res.redirect('/caregiver'));
 }
-if (existsSync(caredDist)) {
-  app.use('/cared', express.static(caredDist));
-  app.get('/cared/{*splat}', (_, res) => res.sendFile(join(caredDist, 'index.html')));
-}
-
-// Root redirect → caregiver dashboard
-app.get('/', (_, res) => res.redirect('/caregiver'));
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
-  console.log(`ElderAssist backend running on http://localhost:${PORT}`);
+  console.log(`ElderAssist backend running on http://localhost:${PORT} (role=${APP_ROLE || 'combined'})`);
 });

@@ -1,10 +1,26 @@
 services:
   - type: web
-    name: elderassist
+    name: elderassist-caregiver
     runtime: node
     plan: free
-    buildCommand: npm install && npm run build
+    buildCommand: npm install && npm run build:caregiver
     startCommand: node server/index.js
     envVars:
       - key: NODE_ENV
         value: production
+      - key: APP_ROLE
+        value: caregiver
+
+  - type: web
+    name: elderassist-cared
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build:cared
+    startCommand: node server/index.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: APP_ROLE
+        value: cared
+      - key: API_PROXY
+        value: https://elderassist-caregiver.onrender.com

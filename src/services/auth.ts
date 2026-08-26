@@ -147,3 +147,11 @@ export async function getConnectedPersons(): Promise<ApiUser[]> {
   if (IS_DEMO_MODE) return [];
   return api.get('/caregiver/connected');
 }
+
+export async function sendOtp(email: string): Promise<void> {
+  await api.post<{ ok: boolean }>('/auth/send-otp', { email });
+}
+
+export async function verifyOtp(email: string, code: string): Promise<void> {
+  await api.post<{ ok: boolean }>('/auth/verify-otp', { email, code });
+}
