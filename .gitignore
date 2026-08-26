@@ -1,0 +1,10 @@
+node_modules
+dist
+.env
+.env.*
+*.local
+*.zip
+.DS_Store
+server/data.json
+train-output.txt
+train.bat

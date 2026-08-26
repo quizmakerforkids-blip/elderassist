@@ -1,0 +1,88 @@
+{
+  "documents": [
+    {
+      "id": "doc-med-diabetes-1",
+      "title": "Best medicines for diabetes management",
+      "content": "Common diabetes medications include: Metformin (first-line for Type 2 diabetes, helps control blood sugar), insulin (various types for Type 1 and advanced Type 2), GLP-1 receptor agonists (semaglutide/Ozempic, liraglutide), SGLT2 inhibitors (empagliflozin, dapagliflozin), sulfonylureas (glipizide, glyburide), DPP-4 inhibitors (sitagliptin), and thiazolidinediones (pioglitazone). Metformin is usually the first medicine prescribed. Always follow your doctor's prescription. Never change diabetes medication without consulting your healthcare provider.",
+      "tags": ["diabetes", "medicine", "metformin", "insulin", "blood sugar", "medication", "tablet"]
+    },
+    {
+      "id": "doc-med-diabetes-2",
+      "title": "Diabetes management tips for elderly",
+      "content": "Elderly diabetes management requires careful monitoring: check blood sugar regularly, take medications on time, follow a balanced diet low in sugar and refined carbs, exercise regularly (walking 30 minutes daily), stay hydrated, check feet daily for sores or cuts, keep regular doctor appointments, and carry glucose tablets for emergencies. Watch for signs of low blood sugar (shakiness, sweating, confusion) and high blood sugar (frequent urination, thirst, blurred vision).",
+      "tags": ["diabetes", "elderly", "management", "blood sugar", "diet", "exercise"]
+    },
+    {
+      "id": "doc-med-bp-1",
+      "title": "Best medicines for high blood pressure",
+      "content": "Common blood pressure medications include: ACE inhibitors (lisinopril, enalapril), ARBs (losartan, valsartan), calcium channel blockers (amlodipine, nifedipine), beta blockers (metoprolol, atenolol), diuretics (hydrochlorothiazide, furosemide), and alpha blockers (doxazosin). The choice depends on your age, other conditions, and side effects. Most elderly patients need 2-3 medicines to control blood pressure. Target is usually below 130/80 mmHg. Take medicines at the same time daily.",
+      "tags": ["blood pressure", "hypertension", "medicine", "tablet", "medication", "heart"]
+    },
+    {
+      "id": "doc-med-bp-2",
+      "title": "Blood pressure monitoring at home",
+      "content": "How to measure blood pressure at home: 1) Sit quietly for 5 minutes. 2) Place arm on table at heart level. 3) Wrap cuff snugly around upper arm. 4) Press start on the monitor. 5) Stay still and quiet during reading. 6) Record the reading with time and date. Measure twice daily (morning and evening). Keep a log to share with your doctor. Normal: below 120/80. Elevated: 120-129/below 80. High: 130/80 or above. Contact your doctor if consistently above 140/90.",
+      "tags": ["blood pressure", "monitor", "home", "check", "reading", "heart"]
+    },
+    {
+      "id": "doc-med-heart-1",
+      "title": "Heart disease medicines for elderly",
+      "content": "Common heart medications for elderly: statins (atorvastatin, rosuvastatin) for cholesterol, aspirin (low-dose) for blood clot prevention, beta blockers (metoprolol) for heart rate control, ACE inhibitors for heart failure, digoxin for irregular heartbeat, warfarin or newer anticoagulants for atrial fibrillation, nitroglycerin for chest pain, and diuretics for fluid retention. Always take heart medicines exactly as prescribed. Never stop suddenly without consulting your cardiologist.",
+      "tags": ["heart", "cardiac", "medicine", "statin", "aspirin", "medication"]
+    },
+    {
+      "id": "doc-med-pain-1",
+      "title": "Pain management medicines for elderly",
+      "content": "Pain medicines for elderly: acetaminophen (Tylenol) is safest first choice for mild pain. NSAIDs (ibuprofen, naproxen) should be used sparingly due to stomach and kidney risks. Topical pain relievers (diclofenac gel, capsaicin cream) are safer alternatives. For moderate pain, your doctor may prescribe tramadol. For severe pain, stronger opioids may be needed with careful monitoring. Always use the lowest effective dose. Avoid aspirin in elderly unless specifically prescribed.",
+      "tags": ["pain", "medicine", "tablet", "analgesic", "ibuprofen", "acetaminophen"]
+    },
+    {
+      "id": "doc-med-vitamin-1",
+      "title": "Important vitamins and supplements for elderly",
+      "content": "Recommended supplements for elderly: Vitamin D (800-1000 IU daily, helps bone health), Calcium (1200mg daily for bone strength), Vitamin B12 (often deficient in elderly, 1000mcg daily), Omega-3 fatty acids (heart and brain health), Magnesium (muscle and nerve function), and a daily multivitamin. Iron supplements only if prescribed for anemia. Always tell your doctor about all supplements you take as they can interact with prescription medicines.",
+      "tags": ["vitamin", "supplement", "calcium", "vitamin d", "b12", "nutrition"]
+    },
+    {
+      "id": "doc-med-sleep-1",
+      "title": "Sleep medicines and aids for elderly",
+      "content": "Sleep medicine options for elderly: melatonin (safest, 0.5-3mg before bed), diphenhydramine (Benadryl, avoid long-term use), doxepin (low-dose for insomnia), trazodone (low-dose), and zolpidem (short-term only). Non-medication approaches are preferred: regular sleep schedule, dark cool room, avoid screens before bed, limit caffeine after noon, relaxation techniques. Avoid benzodiazepines (diazepam, lorazepam) in elderly due to fall risk and confusion. Always consult your doctor before starting sleep medicine.",
+      "tags": ["sleep", "insomnia", "medicine", "melatonin", "tablet", "rest"]
+    },
+    {
+      "id": "doc-med-stomach-1",
+      "title": "Digestive and stomach medicines for elderly",
+      "content": "Common digestive medicines: antacids (Tums, Rolaids) for heartburn, omeprazole (Prilosec) or pantoprazole for acid reflux (PPIs, use short-term), famotidine (Pepcid) for ulcers, simethicone (Gas-X) for bloating, bisacodyl (Dulcolax) or docusate (Colace) for constipation, loperamide (Imodium) for diarrhea, and probiotics for gut health. Elderly often have constipation — increase fiber, water, and gentle exercise. Avoid long-term use of laxatives without medical advice.",
+      "tags": ["stomach", "digestive", "constipation", "heartburn", "medicine", "antacid"]
+    },
+    {
+      "id": "doc-med-interaction-1",
+      "title": "Dangerous drug interactions elderly should know",
+      "content": "Critical drug interactions for elderly: Warfarin + aspirin = bleeding risk. ACE inhibitor + potassium supplement = dangerous potassium levels. Metformin + alcohol = lactic acidosis. Statins + grapefruit = increased side effects. Blood pressure medicines + NSAIDs = reduced effectiveness. Antidepressants (SSRIs) + tramadol = serotonin syndrome. Digoxin + amiodarone = toxicity. Always use one pharmacy so they can check all interactions. Keep an updated medication list. Report any new symptoms after starting a new drug.",
+      "tags": ["drug interaction", "dangerous", "medication safety", "warfarin", "aspirin"]
+    },
+    {
+      "id": "doc-med-injection-1",
+      "title": "Insulin and injection medicines for elderly",
+      "content": "Insulin types for elderly: rapid-acting (lispro/Humalog, starts in 15 min), short-acting (regular/Novolin, starts in 30 min), intermediate-acting (NPH, lasts 12-18 hours), long-acting (glargine/Lantus, lasts 24 hours). Injection sites: abdomen (fastest absorption), thigh, upper arm, buttocks. Rotate sites to prevent lumps. Store insulin in refrigerator (not frozen). Use insulin pen or syringe. Inject at same times daily. Monitor blood sugar before and 2 hours after meals.",
+      "tags": ["insulin", "injection", "diabetes", "needle", "blood sugar"]
+    },
+    {
+      "id": "doc-med-eye-1",
+      "title": "Eye medicines and vision care for elderly",
+      "content": "Common eye conditions and medicines: glaucoma drops (latanoprost, timolol) to reduce eye pressure, dry eye drops (artificial tears, cyclosporine), macular degeneration injections (ranibizumab, aflibercept), cataract surgery (most common elderly surgery), and antibiotic drops for infections. Protect eyes from UV light. Get annual eye exams. Report sudden vision changes immediately. Eye drops: tilt head back, pull lower lid, drop in pocket, close eye for 1 minute.",
+      "tags": ["eye", "vision", "glaucoma", "cataract", "drops", "medication"]
+    },
+    {
+      "id": "doc-med-mental-1",
+      "title": "Mental health medicines for elderly",
+      "content": "Medications for elderly mental health: SSRIs (sertraline/Zoloft, escitalopram/Lexapro) for depression and anxiety — preferred in elderly due to fewer side effects. Mirtazapine for depression with insomnia and appetite loss. Quetiapine or risperidone for dementia-related agitation (low doses). Donepezil (Aricept) for Alzheimer's disease. Avoid benzodiazepines (diazepam) in elderly — increased fall and confusion risk. Start low, go slow with all psychiatric medications in elderly.",
+      "tags": ["mental health", "depression", "anxiety", "medicine", "antidepressant", "SSRI"]
+    },
+    {
+      "id": "doc-med-bone-1",
+      "title": "Bone and joint medicines for elderly",
+      "content": "Medications for bone and joint health: bisphosphonates (alendronate/Fosamax, risedronate) for osteoporosis — take on empty stomach with water, remain upright 30 minutes. Calcium + Vitamin D supplements. Denosumab (Prolia) injection every 6 months. For arthritis: acetaminophen first, then topical NSAIDs, then oral NSAIDs (with stomach protection). Glucosamine and chondroitin supplements may help. Hyaluronic acid injections for knee osteoarthritis.",
+      "tags": ["bone", "joint", "osteoporosis", "arthritis", "medicine", "calcium"]
+    }
+  ]
+}

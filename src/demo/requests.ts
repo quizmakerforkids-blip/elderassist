@@ -1,0 +1,55 @@
+import type { AssistanceRequest } from '../types';
+import { ago, daysAgo } from './time';
+
+export const DEMO_REQUESTS: AssistanceRequest[] = [
+  {
+    id: 'REQ-301',
+    elderId: 'eld-01',
+    elderName: 'Lakshmi Rao',
+    message: 'Can you remind me about my appointment tomorrow?',
+    category: 'REMINDER',
+    status: 'PENDING',
+    source: 'HOMEHUB',
+    createdAt: ago(71),
+  },
+  {
+    id: 'REQ-302',
+    elderId: 'eld-02',
+    elderName: 'Raman Kumar',
+    message: 'Need help booking a cab to the clinic.',
+    category: 'GENERAL_HELP',
+    status: 'PENDING',
+    source: 'BASIC_PHONE',
+    createdAt: ago(185),
+  },
+  {
+    id: 'REQ-303',
+    elderId: 'eld-01',
+    elderName: 'Lakshmi Rao',
+    message: 'Book a follow-up visit with Dr. Kulkarni.',
+    category: 'APPOINTMENT',
+    status: 'IN_PROGRESS',
+    source: 'HOMEHUB',
+    createdAt: daysAgo(1, 10, 15),
+  },
+  {
+    id: 'REQ-304',
+    elderId: 'eld-03',
+    elderName: 'Devika Menon',
+    message: 'Please ask Meera to call me in the evening.',
+    category: 'FAMILY_CONTACT',
+    status: 'COMPLETED',
+    source: 'BASIC_PHONE',
+    createdAt: daysAgo(1, 18, 40),
+  },
+  {
+    id: 'REQ-305',
+    elderId: 'eld-02',
+    elderName: 'Raman Kumar',
+    message: 'Help filling out the pension renewal form.',
+    category: 'GOVERNMENT_SERVICE',
+    status: 'COMPLETED',
+    source: 'VOICE_ASSISTANT',
+    createdAt: daysAgo(4, 11, 5),
+  },
+];

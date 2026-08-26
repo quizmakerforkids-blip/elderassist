@@ -1,0 +1,233 @@
+{
+  "documents": [
+    {
+      "id": "doc-emergency-1",
+      "title": "How to report an emergency in ElderAssist",
+      "content": "To report an emergency, click the red Report Emergency button on your dashboard. You can type what is happening or record a voice message using the microphone button. Your caregiver will be immediately notified and can see the emergency in their Emergency Center. They will acknowledge it to let you know they are responding.",
+      "tags": ["emergency", "report", "help", "alert", "caregiver"]
+    },
+    {
+      "id": "doc-emergency-2",
+      "title": "What happens when an emergency is reported",
+      "content": "When an elder reports an emergency, the system immediately notifies all linked caregivers. The emergency appears in the Emergency Center with status OPEN. Caregivers can acknowledge the emergency, which changes status to ACKNOWLEDGED and alerts the elder. Once help arrives, the caregiver marks it RESOLVED. If the situation is life-threatening, always call 911 first.",
+      "tags": ["emergency", "process", "acknowledge", "resolve", "911"]
+    },
+    {
+      "id": "doc-emergency-3",
+      "title": "Emergency types and sources",
+      "content": "Emergencies can be created from multiple sources: the ElderAssist dashboard (Report Emergency button), the HomeHub physical device (HELP button), or voice assistant. Each emergency records the description, optional voice message, timestamp, and status. Voice messages are stored as audio and can be played back by caregivers.",
+      "tags": ["emergency", "types", "homehub", "voice", "source"]
+    },
+    {
+      "id": "doc-pairing-1",
+      "title": "How to connect a caregiver and elder",
+      "content": "Pairing links a caregiver to an elder in ElderAssist. The caregiver goes to their dashboard and clicks Connect Family to generate a unique pairing code. The code looks like AB-1234. The elder then clicks Connect Caregiver on their dashboard and enters this code. Once paired, the caregiver can see the elder's status, emergencies, and HomeHub. Only one caregiver can be linked per elder.",
+      "tags": ["pairing", "connect", "code", "link", "caregiver", "family"]
+    },
+    {
+      "id": "doc-homehub-1",
+      "title": "ElderAssist HomeHub device",
+      "content": "The HomeHub is a physical device placed in the elder's home. It has three large buttons: HELP (red), FAMILY (blue), and CANCEL (gray). Pressing HELP creates an emergency and alerts the caregiver. FAMILY sends a family contact request. CANCEL cancels the current action. The device has LED indicators showing status. It connects to the internet via WiFi and communicates with the ElderAssist cloud.",
+      "tags": ["homehub", "device", "help", "family", "cancel", "buttons", "hardware"]
+    },
+    {
+      "id": "doc-homehub-2",
+      "title": "HomeHub LED status indicators",
+      "content": "The HomeHub has an LED ring around the main buttons. A solid green LED means the device is ready and connected. A blinking yellow LED means the device is processing a request. A solid red LED means an emergency is active. If the LED is off, the device may be offline or powered off. Check the HomeHub page in ElderAssist to see the device status.",
+      "tags": ["homehub", "led", "status", "green", "yellow", "red", "offline"]
+    },
+    {
+      "id": "doc-voice-1",
+      "title": "Voice messages in emergencies",
+      "content": "When reporting an emergency from the dashboard, you can record a voice message. Click the Report Emergency button, then click Start Recording. Speak clearly about what is happening. When done, click Stop Recording. You will hear your recording played back. The voice message is sent along with your text description to your caregiver. Voice messages help caregivers understand the urgency and situation better.",
+      "tags": ["voice", "recording", "message", "audio", "emergency"]
+    },
+    {
+      "id": "doc-appointments-1",
+      "title": "Managing appointments in ElderAssist",
+      "content": "Appointments track medical visits, checkups, and other scheduled events. Caregivers can create appointments for their linked elders. Each appointment has a title, provider name, location, date, and status (REQUESTED, CONFIRMED, CANCELLED, COMPLETED). Elders can view their upcoming appointments on their dashboard. Reminders can be set for appointments.",
+      "tags": ["appointment", "medical", "doctor", "schedule", "visit"]
+    },
+    {
+      "id": "doc-reminders-1",
+      "title": "Reminders and medication tracking",
+      "content": "Reminders help elders stay on track with medications and daily activities. Each reminder has a title, time of day, frequency (ONCE, DAILY, WEEKLY, CUSTOM), and status (ACTIVE, PAUSED, COMPLETED). Common reminders include medication times, meal times, exercise, and water intake. Caregivers manage reminders from their dashboard. Elders see their next upcoming reminders.",
+      "tags": ["reminder", "medication", "medicine", "pills", "daily", "schedule"]
+    },
+    {
+      "id": "doc-notifications-1",
+      "title": "Notifications in ElderAssist",
+      "content": "Notifications keep everyone informed about important events. Types include: EMERGENCY (new or updated emergencies), APPOINTMENT (appointment changes), HOMEHUB (device events), REQUEST (care requests), and SYSTEM (platform updates). The notification bell shows unread count. Caregivers see notifications for all their linked elders. Elders see their own notifications.",
+      "tags": ["notification", "alert", "update", "bell", "unread"]
+    },
+    {
+      "id": "doc-settings-1",
+      "title": "Accessibility settings in ElderAssist",
+      "content": "ElderAssist includes accessibility features: Larger Text increases all font sizes. High Contrast uses stronger color differences for better visibility. Reduced Motion disables animations. Language selection supports English, Hindi, Telugu, Malayalam, Marathi, and Tamil. These settings are per-device and saved in the browser. Elders who have difficulty reading can benefit from larger text mode.",
+      "tags": ["settings", "accessibility", "text", "contrast", "language", "motion"]
+    },
+    {
+      "id": "doc-dashboard-1",
+      "title": "Caregiver dashboard overview",
+      "content": "The caregiver dashboard shows a summary of all care activities. It displays: number of people you care for, open emergencies, pending requests, HomeHubs online, recent activity timeline, and elder overview cards. Each elder card shows their name, status, last activity, and a link to their full profile. Quick actions provide access to emergency center, appointments, reminders, and notifications.",
+      "tags": ["dashboard", "caregiver", "overview", "summary", "activity"]
+    },
+    {
+      "id": "doc-dashboard-2",
+      "content": "The elder dashboard is simplified for ease of use. It shows: current status (All Good, Needs Attention, Emergency), active emergencies count, pending requests count, caregiver information, and quick actions. Quick actions include Report Emergency, View Reminders, View Appointments, Check Notifications, and Settings. The Connect Caregiver button appears if no caregiver is linked.",
+      "id": "doc-elder-dashboard-1",
+      "title": "Elder (cared person) dashboard overview",
+      "tags": ["dashboard", "elder", "cared", "status", "simplified"]
+    },
+    {
+      "id": "doc-health-1",
+      "title": "Elder care health tips",
+      "content": "For elderly care, important health practices include: staying hydrated (drink water regularly), taking medications on time (use reminders), regular light exercise (walking, stretching), maintaining social connections, eating balanced meals, getting adequate sleep, and attending regular medical checkups. Report any sudden changes in health to your caregiver immediately.",
+      "tags": ["health", "tips", "hydration", "exercise", "sleep", "medication"]
+    },
+    {
+      "id": "doc-health-2",
+      "title": "Common elderly health concerns",
+      "content": "Common health concerns for elderly people include falls (risk of fractures), dehydration, medication interactions, cognitive changes, vision and hearing changes, joint pain and arthritis, heart conditions, and diabetes management. If you experience chest pain, difficulty breathing, sudden severe headache, confusion, or falls, seek emergency help immediately.",
+      "tags": ["health", "falls", "dehydration", "chest pain", "emergency", "fracture"]
+    },
+    {
+      "id": "doc-health-3",
+      "title": "Fall prevention for elderly",
+      "content": "Falls are the most common cause of injury in elderly people. Prevention tips: remove loose rugs and tripping hazards, install grab bars in bathrooms, ensure good lighting especially at night, wear non-slip shoes, keep walkways clear, use assistive devices if needed (walker, cane), exercise regularly to maintain balance and strength, and have vision checked regularly.",
+      "tags": ["fall", "prevention", "safety", "balance", "grab bars", "lighting"]
+    },
+    {
+      "id": "doc-health-4",
+      "title": "Medication safety for elderly",
+      "content": "Medication safety is critical for elderly people who often take multiple prescriptions. Tips: use a pill organizer, set reminders for each dose, keep an updated medication list, never skip doses without consulting your doctor, report side effects immediately, store medications properly, and never share medications. If you accidentally take a double dose, contact your doctor or pharmacist.",
+      "tags": ["medication", "safety", "pills", "prescription", "dose", "organizer"]
+    },
+    {
+      "id": "doc-health-5",
+      "title": "Heart attack warning signs",
+      "content": "Heart attack warning signs include: chest pain or discomfort, pain spreading to arm jaw or back, shortness of breath, cold sweat, nausea, lightheadedness, and unusual fatigue. Women may experience atypical symptoms. If you suspect a heart attack, call emergency services immediately, chew an aspirin if not allergic, and sit or lie down in a comfortable position.",
+      "tags": ["heart attack", "chest pain", "breathing", "emergency", "symptoms"]
+    },
+    {
+      "id": "doc-health-6",
+      "title": "Stroke warning signs FAST",
+      "content": "Remember FAST for stroke recognition: F - Face drooping (one side of face drops). A - Arm weakness (one arm drifts downward). S - Speech difficulty (slurred or strange speech). T - Time to call emergency services immediately. Other signs include sudden severe headache, sudden confusion, sudden vision problems, and sudden difficulty walking. Time is critical — every minute counts.",
+      "tags": ["stroke", "FAST", "face", "arm", "speech", "emergency"]
+    },
+    {
+      "id": "doc-health-7",
+      "title": "Dehydration in elderly",
+      "content": "Dehydration is common in elderly people because the sense of thirst diminishes with age. Signs include: dry mouth, dark urine, dizziness, fatigue, confusion, and dry skin. Prevention: drink water regularly even if not thirsty, eat water-rich foods (fruits, soups), keep water within reach, and monitor urine color (should be light yellow). Severe dehydration requires immediate medical attention.",
+      "tags": ["dehydration", "water", "hydration", "thirst", "fatigue"]
+    },
+    {
+      "id": "doc-elderly-care-1",
+      "title": "What is elder care",
+      "content": "Elder care (also called senior care or elderly care) is the fulfillment of special needs and requirements of older adults. It encompasses assisted living, adult day care, long-term care, nursing homes, hospice care, and home care. The goal is to help elderly people maintain their independence, dignity, and quality of life while ensuring their safety and health.",
+      "tags": ["elder care", "senior care", "assisted living", "nursing", "independence"]
+    },
+    {
+      "id": "doc-elderly-care-2",
+      "title": "Caregiver responsibilities",
+      "content": "A caregiver helps with daily activities including: medication management, meal preparation, mobility assistance, personal hygiene, transportation, companionship, medical appointment coordination, emergency response, and emotional support. Caregivers can be family members, friends, or professional home health aides. Technology like ElderAssist helps caregivers monitor and respond to their loved ones' needs remotely.",
+      "tags": ["caregiver", "responsibilities", "daily activities", "medication", "support"]
+    },
+    {
+      "id": "doc-elderly-care-3",
+      "title": "Loneliness and social isolation in elderly",
+      "content": "Social isolation and loneliness are serious health risks for elderly people, comparable to smoking 15 cigarettes a day. Effects include increased risk of dementia, heart disease, stroke, and depression. Ways to combat isolation: regular phone or video calls, community activities, senior centers, volunteer work, pet companionship, technology for staying connected, and maintaining routines.",
+      "tags": ["loneliness", "isolation", "social", "depression", "community", "mental health"]
+    },
+    {
+      "id": "doc-elderly-care-4",
+      "title": "Technology for elderly care",
+      "content": "Technology is transforming elder care with innovations like: emergency alert systems (medical alert buttons), telemedicine (remote doctor visits), medication management apps, GPS tracking for wandering prevention, smart home devices, video calling for social connection, health monitoring wearables, and AI-powered care platforms like ElderAssist that connect caregivers and elders.",
+      "tags": ["technology", "telemedicine", "smart home", "wearable", "AI", "digital"]
+    },
+    {
+      "id": "doc-nutrition-1",
+      "title": "Nutrition tips for elderly people",
+      "content": "Good nutrition for elderly people includes: protein-rich foods (eggs, fish, lean meat, beans), calcium and vitamin D (dairy, leafy greens), fiber (whole grains, fruits, vegetables), healthy fats (olive oil, nuts, fish), and adequate hydration. Limit sodium, sugar, and processed foods. Eating smaller, more frequent meals may be easier than three large meals. Consult a nutritionist for personalized plans.",
+      "tags": ["nutrition", "diet", "protein", "calcium", "fiber", "food", "eating"]
+    },
+    {
+      "id": "doc-exercise-1",
+      "title": "Safe exercises for elderly people",
+      "content": "Safe exercises for elderly people include: walking (30 minutes daily), chair exercises, water aerobics, Tai Chi (improves balance), gentle yoga, resistance band training, and stretching. Benefits include improved balance (reducing fall risk), stronger muscles, better sleep, improved mood, and cognitive health. Always start slowly, listen to your body, and consult a doctor before starting a new exercise program.",
+      "tags": ["exercise", "walking", "yoga", "balance", "strength", "fitness"]
+    },
+    {
+      "id": "doc-sleep-1",
+      "title": "Sleep tips for elderly people",
+      "content": "Good sleep is essential for elderly health. Tips: maintain a consistent sleep schedule, keep the bedroom dark and quiet, limit caffeine and afternoon naps, get morning sunlight exposure, establish a relaxing bedtime routine, avoid screens before bed, and keep the room at a comfortable temperature. Most elderly need 7-8 hours of sleep. If insomnia persists, consult a healthcare provider.",
+      "tags": ["sleep", "insomnia", "rest", "bedtime", "circadian"]
+    },
+    {
+      "id": "doc-mental-1",
+      "title": "Mental health for elderly people",
+      "content": "Mental health is as important as physical health in aging. Signs of depression in elderly: persistent sadness, loss of interest, changes in appetite or sleep, fatigue, difficulty concentrating, and withdrawal from social activities. Support includes: staying socially active, engaging in hobbies, physical exercise, mindfulness and meditation, maintaining routines, and seeking professional help when needed.",
+      "tags": ["mental health", "depression", "mood", "happiness", "mindfulness"]
+    },
+    {
+      "id": "doc-cognitive-1",
+      "title": "Brain health and cognitive decline prevention",
+      "content": "To maintain cognitive health: stay mentally active (puzzles, reading, learning new skills), exercise regularly, maintain social connections, eat a brain-healthy diet (Mediterranean diet), manage cardiovascular risk factors, get adequate sleep, and manage stress. Warning signs of cognitive decline: forgetting recent events, difficulty with familiar tasks, confusion about time or place, and trouble following conversations.",
+      "tags": ["cognitive", "brain", "memory", "dementia", "alzheimer", "mental exercise"]
+    },
+    {
+      "id": "doc-elderly-care-5",
+      "title": "Activities for elderly people",
+      "content": "Engaging activities for elderly people include: reading and audiobooks, puzzles and board games, gardening, arts and crafts, music and singing, cooking and baking, reminiscing and storytelling, gentle exercise classes, nature walks, pet therapy, volunteer work, and technology learning. Activities should match the person's abilities and interests to promote enjoyment and a sense of purpose.",
+      "tags": ["activities", "hobbies", "engagement", "fun", "purpose", "creative"]
+    },
+    {
+      "id": "doc-elderly-care-6",
+      "title": "Communication tips for elderly care",
+      "content": "Effective communication with elderly people: speak clearly and at a moderate pace, maintain eye contact, use simple sentences, be patient and allow time to respond, avoid talking down or being patronizing, use their preferred name, listen actively, ask one question at a time, and use visual aids if needed. For those with hearing loss, face them directly and reduce background noise.",
+      "tags": ["communication", "listening", "patience", "conversation", "hearing"]
+    },
+    {
+      "id": "doc-appointment-pharma-1",
+      "title": "Caregiver appointment management and pharmaceutical tracking",
+      "content": "In ElderAssist, the caregiver has full control over appointment scheduling and medication tracking. Caregivers can create new appointments for their linked elders, including doctor visits, specialist consultations, lab tests, and pharmacy pickups. Each appointment includes a title, healthcare provider name, location, date and time, and status (REQUESTED, CONFIRMED, CANCELLED, COMPLETED). The caregiver dashboard shows all upcoming and past appointments for each elder they care for.",
+      "tags": ["appointment", "caregiver", "schedule", "pharmaceutical", "medicine", "tracking"]
+    },
+    {
+      "id": "doc-appointment-pharma-2",
+      "title": "Medication and prescription management in ElderAssist",
+      "content": "ElderAssist helps track medications through the Reminders system. Caregivers set up medication reminders with the medicine name, dosage instructions, time of day, and frequency (once daily, twice daily, three times daily, weekly). The elder sees their next upcoming medication on their dashboard. Reminders can be marked as completed or missed. Common medications tracked include blood pressure pills, diabetes medication, pain relievers, vitamins, and heart medication. Always follow your doctor's prescription and consult your pharmacist about drug interactions.",
+      "tags": ["medication", "prescription", "medicine", "pharmaceutical", "drug", "tablet", "dosage", "pharmacist"]
+    },
+    {
+      "id": "doc-appointment-pharma-3",
+      "title": "How caregivers create and manage appointments",
+      "content": "Caregivers can create appointments from their ElderAssist dashboard. Steps: 1) Go to the Appointments section. 2) Click 'Create Appointment'. 3) Enter the elder's name, appointment title (e.g., 'Annual checkup'), provider name, location, date and time. 4) Set status to REQUESTED. 5) The elder sees the appointment on their dashboard. Caregivers can also confirm, reschedule, or cancel appointments. They can add notes about what the appointment is for, such as medication review, blood test, or eye exam.",
+      "tags": ["appointment", "caregiver", "create", "manage", "schedule", "provider", "doctor"]
+    },
+    {
+      "id": "doc-appointment-pharma-4",
+      "title": "Pharmaceutical tablets and medicine forms",
+      "content": "Common pharmaceutical forms for elderly medications: tablets (most common), capsules, liquid suspensions, patches (for pain or nicotine), inhalers (for asthma), eye drops, ear drops, suppositories, and injections. Tablets should be stored in a cool dry place. Use a pill organizer to sort daily doses. Never crush enteric-coated or sustained-release tablets. If you have trouble swallowing tablets, ask your pharmacist about liquid alternatives. Always check expiration dates on medications.",
+      "tags": ["pharmaceutical", "tablet", "medicine", "drug", "capsule", "pill", "form", "dosage"]
+    },
+    {
+      "id": "doc-appointment-pharma-5",
+      "title": "Drug interactions and medication safety for elderly",
+      "content": "Elderly people often take multiple medications (polypharmacy), increasing the risk of drug interactions. Common dangerous interactions: blood thinners with aspirin, certain antibiotics with heart medication, grapefruit juice with statins, and NSAIDs with blood pressure medication. Always tell your doctor about all medications you take including over-the-counter drugs and supplements. Keep an updated medication list. Use one pharmacy for all prescriptions so they can track interactions. Report any new symptoms after starting a new medication.",
+      "tags": ["drug interaction", "medication safety", "polypharmacy", "pharmaceutical", "prescription", "pharmacist"]
+    },
+    {
+      "id": "doc-appointment-pharma-6",
+      "title": "ElderAssist caregiver dashboard for appointments",
+      "content": "The caregiver dashboard in ElderAssist provides a complete view of care activities. Key features: elder overview cards showing each linked person's status, emergency center for managing active emergencies, appointment scheduling panel, reminders management, HomeHub monitoring, and notification center. Caregivers can see appointment history, upcoming visits, and medication adherence for each elder. The dashboard uses role-based access so each caregiver only sees their linked elders' information.",
+      "tags": ["caregiver", "dashboard", "appointment", "overview", "panel", "features"]
+    },
+    {
+      "id": "doc-appointment-pharma-7",
+      "title": "Setting up medication reminders step by step",
+      "content": "To set up medication reminders in ElderAssist (caregiver): 1) Go to Reminders section from your dashboard. 2) Click 'Create Reminder'. 3) Select the elder you are creating it for. 4) Enter the medication name (e.g., 'Metformin 500mg'). 5) Set the time (e.g., 8:00 AM). 6) Choose frequency (Daily, Weekly, or Custom). 7) Add notes if needed (e.g., 'Take with food'). 8) Save. The elder will see this reminder at the scheduled time. They can mark it as done when they take their medicine.",
+      "tags": ["reminder", "medication", "setup", "create", "step by step", "caregiver", "medicine"]
+    }
+  ]
+}

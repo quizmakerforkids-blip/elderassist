@@ -1,0 +1,231 @@
+{
+  "version": "1.0.0",
+  "updatedAt": null,
+  "intents": [
+    {
+      "name": "greeting",
+      "patterns": ["hi", "hello", "hey", "good morning", "good evening", "good afternoon", "how are you", "whats up", "sup", "yo"],
+      "responses": [
+        "Hello! I'm ElderAssist AI. I can help you with emergencies, appointments, reminders, and more. What do you need?",
+        "Hi there! How can I help you today?",
+        "Hey! I'm here to help. You can ask me about appointments, reminders, emergencies, or anything else about ElderAssist."
+      ]
+    },
+    {
+      "name": "emergency_help",
+      "patterns": ["emergency", "help me", "i need help", "sos", "urgent", "danger", "fallen", "fell down", "chest pain", "cant breathe", "feeling dizzy", "pain", "hurt", "sick", "ambulance"],
+      "responses": [
+        "If you are in immediate danger, please press the RED emergency button on your dashboard right away! Your caregiver will be notified immediately. You can also describe what's happening by clicking 'Report Emergency' and optionally record a voice message.",
+        "I understand you need help. Please use the emergency button on your dashboard to alert your caregiver immediately. You can also call emergency services at 911 if it's life-threatening.",
+        "For emergencies, please use the Report Emergency button on your dashboard. You can type what's wrong or record a voice message so your caregiver knows exactly how to help."
+      ]
+    },
+    {
+      "name": "appointment_search",
+      "patterns": ["appointment", "appointments", "doctor", "dentist", "medical visit", "checkup", "check-up", "next visit", "schedule", "upcoming appointment", "when is my", "do i have"],
+      "responses": [
+        "I can help you check your appointments! You can view all your appointments by clicking 'View my appointments' on your dashboard. Would you like me to navigate you there?",
+        "To see your upcoming appointments, go to the Appointments section from your dashboard quick actions. Your caregiver can also schedule new appointments for you.",
+        "You can find all your appointments in the Appointments section. If you don't see any, ask your caregiver to set one up for you."
+      ],
+      "actions": ["navigate:/appointments"]
+    },
+    {
+      "name": "reminder_search",
+      "patterns": ["reminder", "reminders", "medication", "medicine", "pills", "take medicine", "what should i take", "when to take", "alarm", "medication schedule"],
+      "responses": [
+        "You can check your reminders in the Reminders section. This includes medication schedules, daily routines, and other important tasks. Would you like me to take you there?",
+        "Your reminders help you stay on track with medications and daily activities. Visit the Reminders section from your dashboard to see what's coming up.",
+        "To check your medication reminders, go to the Reminders section. If you don't see any reminders, ask your caregiver to set them up."
+      ],
+      "actions": ["navigate:/reminders"]
+    },
+    {
+      "name": "caregiver_info",
+      "patterns": ["caregiver", "who is my caregiver", "my caregiver", "contact caregiver", "family", "son", "daughter", "talk to", "call family", "reach my"],
+      "responses": [
+        "Your caregiver information is shown on your dashboard. You can see their name and connection status there. If you need to contact them, use the emergency button or check your notifications.",
+        "Your caregiver is connected to your ElderAssist account. They can see your status and emergencies. Check the 'Your caregiver' section on your dashboard for details.",
+        "To reach your caregiver, you can send an emergency alert or check notifications. Your caregiver is notified whenever you report an emergency."
+      ]
+    },
+    {
+      "name": "notifications_help",
+      "patterns": ["notification", "notifications", "alerts", "messages", "any news", "anything new", "what happened", "update"],
+      "responses": [
+        "You can check your notifications by clicking the bell icon or visiting the Notifications section. This shows emergencies, appointment updates, and system messages.",
+        "Notifications keep you informed about important events. Visit the Notifications section from your dashboard to see all updates.",
+        "Check your Notifications section to see the latest updates about emergencies, appointments, and system messages."
+      ],
+      "actions": ["navigate:/notifications"]
+    },
+    {
+      "name": "settings_help",
+      "patterns": ["settings", "preferences", "change language", "text size", "contrast", "accessibility", "big text", "large text", "dark mode", "theme", "account", "profile", "sign out", "logout", "log out"],
+      "responses": [
+        "You can manage your settings including text size, contrast, language, and more in the Settings section. Would you like me to take you there?",
+        "In Settings, you can adjust text size, high contrast mode, language preferences, and manage your account. Visit Settings from the sidebar.",
+        "Your settings are in the Settings section. You can change accessibility options like larger text and high contrast, or update your language preference."
+      ],
+      "actions": ["navigate:/settings"]
+    },
+    {
+      "name": "homehub_help",
+      "patterns": ["homehub", "home hub", "hub", "device", "home device", "how does homehub work", "press help", "help button", "family button", "device status"],
+      "responses": [
+        "HomeHub is a physical device that connects to ElderAssist. It has HELP, FAMILY, and CANCEL buttons. When the HELP button is pressed, an emergency is created and your caregiver is alerted. You can manage your HomeHub from the HomeHub section.",
+        "Your HomeHub device lets you quickly call for help by pressing the HELP button. Your caregiver can check its status and see events from the HomeHub page.",
+        "The HomeHub has three buttons: HELP (creates emergency), FAMILY (calls family), and CANCEL. It's connected to your ElderAssist account so your caregiver can monitor it."
+      ],
+      "actions": ["navigate:/homehub"]
+    },
+    {
+      "name": "pairing_help",
+      "patterns": ["connect", "pair", "pairing code", "how to connect", "link caregiver", "add caregiver", "family member", "connect family"],
+      "responses": [
+        "To connect with a caregiver, click 'Connect Caregiver' on your dashboard and enter the pairing code your caregiver gave you. The caregiver generates the code from their dashboard by clicking 'Connect Family'.",
+        "Pairing is easy! Your caregiver generates a code from their dashboard (Connect Family), then you enter that code on your dashboard (Connect Caregiver). Once paired, they can see your status and emergencies.",
+        "Ask your caregiver for their pairing code, then enter it in the 'Connect Caregiver' section on your dashboard. This links your accounts so they can help you."
+      ]
+    },
+    {
+      "name": "status_help",
+      "patterns": ["my status", "how am i doing", "am i okay", "my health", "health status", "safe", "check on me"],
+      "responses": [
+        "Your current status is shown at the top of your dashboard. It shows whether you're safe, need attention, or have an active emergency. Your caregiver can also see this status.",
+        "You can check your status card on the dashboard. It shows All Good, Needs Attention, or Emergency based on your recent activity and any open emergencies.",
+        "Your status is displayed on your dashboard. Green means all good, yellow means attention needed, and red means there's an active emergency."
+      ]
+    },
+    {
+      "name": "weather",
+      "patterns": ["weather", "temperature", "is it raining", "forecast", "today weather"],
+      "responses": [
+        "I don't have access to live weather data, but you can check your local weather on your phone or ask your caregiver. Is there anything else I can help with?",
+        "Weather information isn't available in ElderAssist yet. Please check a weather app or your local news. Is there something else I can help you with?"
+      ]
+    },
+    {
+      "name": "joke",
+      "patterns": ["joke", "tell me a joke", "make me laugh", "something funny", "humor"],
+      "responses": [
+        "Why did the elder bring a ladder to the bar? Because the drinks were on the house! 😄 Is there anything else I can help with?",
+        "What do you call a bear with no teeth? A gummy bear! 😊 Need help with anything else?",
+        "Why don't scientists trust atoms? Because they make up everything! 😊 Let me know if you need help with ElderAssist!"
+      ]
+    },
+    {
+      "name": "time",
+      "patterns": ["what time", "what is the time", "current time", "time now", "what day", "what is today", "today date", "what date"],
+      "responses": [
+        "I can tell you the current time: {{CURRENT_TIME}}. Is there anything else you need help with?",
+        "It's currently {{CURRENT_TIME}} on {{CURRENT_DATE}}. How can I help you?"
+      ]
+    },
+    {
+      "name": "thank_you",
+      "patterns": ["thank you", "thanks", "thx", "appreciate", "youre great", "good job", "well done"],
+      "responses": [
+        "You're welcome! I'm always here to help. Is there anything else you need?",
+        "Happy to help! Let me know if there's anything else.",
+        "Anytime! That's what I'm here for. 😊"
+      ]
+    },
+    {
+      "name": "goodbye",
+      "patterns": ["bye", "goodbye", "see you", "later", "take care", "goodnight", "good night"],
+      "responses": [
+        "Take care! Remember, I'm always here if you need help. Stay safe! 😊",
+        "Goodbye! Don't hesitate to come back if you need anything. Stay well!",
+        "See you later! Remember to check your reminders and stay safe."
+      ]
+    },
+    {
+      "name": "how_to_use",
+      "patterns": ["how to use", "help me use", "tutorial", "guide", "what can you do", "features", "how does this work", "what can i do"],
+      "responses": [
+        "Here's what I can help you with:\n\n1. **Emergencies** - Report emergencies, check status\n2. **Appointments** - View and search appointments\n3. **Reminders** - Check medication and activity reminders\n4. **Caregiver** - Info about your connected caregiver\n5. **Notifications** - Check your alerts and updates\n6. **Settings** - Change text size, contrast, language\n7. **HomeHub** - Manage your HomeHub device\n\nJust ask me anything!",
+        "I'm your ElderAssist AI assistant! I can help you navigate the app, find information about emergencies, appointments, reminders, and more. Just ask me a question or tell me what you need."
+      ]
+    },
+    {
+      "name": "appointment_faq",
+      "patterns": ["book appointment", "schedule appointment", "new appointment", "make appointment", "cancel appointment", "change appointment", "reschedule"],
+      "responses": [
+        "To schedule or manage appointments, please ask your caregiver. They can set up new appointments from their dashboard, and you'll see them in your Appointments section. Would you like to go there now?",
+        "Appointment management is done by your caregiver. They can create, update, or cancel appointments for you. You can view all your appointments in the Appointments section."
+      ]
+    },
+    {
+      "name": "emergency_faq",
+      "patterns": ["what happens when", "what if i press", "how does emergency work", "emergency process", "what happens after emergency"],
+      "responses": [
+        "When you report an emergency:\n\n1. You click 'Report Emergency' on your dashboard\n2. You describe what's happening (or record a voice message)\n3. Your caregiver is immediately notified\n4. They acknowledge the emergency to let you know they're coming\n5. Once they've helped, they mark it as resolved\n\nRemember: In a life-threatening emergency, always call 911 first!"
+      ]
+    },
+    {
+      "name": "voice_message",
+      "patterns": ["voice message", "record", "voice", "speak", "talk", "recording", "voice note"],
+      "responses": [
+        "When reporting an emergency, you can record a voice message! Click 'Report Emergency', then click 'Start recording' to record what's happening. Your voice message will be sent to your caregiver along with the emergency alert. They can play it back to understand exactly what you need.",
+        "Voice messages are available when reporting emergencies. Just click the record button in the emergency form and speak. Your caregiver will hear your actual voice message."
+      ]
+    },
+    {
+      "name": "identity",
+      "patterns": ["who are you", "who is it", "who is this", "what are you", "tell me about yourself", "your name", "what is your name", "introduce yourself", "who made you", "what do you do", "what can you do for me"],
+      "responses": [
+        "I'm ElderAssist AI, your personal care assistant! I help elderly people and their caregivers manage emergencies, appointments, reminders, and stay connected. I can also search the web for health information and answer questions about elder care. What can I help you with?",
+        "I'm ElderAssist AI — built to help you stay safe and connected. I can help with emergencies, appointments, medications, HomeHub, and more. Just ask me anything!",
+        "My name is ElderAssist AI! I'm your digital care assistant. I can help you report emergencies, check appointments, manage reminders, and even search the web for health information. How can I help you today?"
+      ]
+    },
+    {
+      "name": "identity_short",
+      "patterns": ["who are you", "who is it", "who is this", "what are you", "your name", "what is your name"],
+      "responses": [
+        "I'm ElderAssist AI — your care assistant!",
+        "I'm ElderAssist AI. I help with emergencies, appointments, and reminders.",
+        "My name is ElderAssist AI. I'm here to help you stay safe!"
+      ]
+    },
+    {
+      "name": "medication_help",
+      "patterns": ["medication", "medicine", "pills", "drug", "drugs", "prescription", "dose", "dosage", "tablet", "tablet for", "pharmaceutical", "pharmacy", "take medicine", "when to take", "pill schedule", "drug schedule", "medicine reminder", "what medicine", "my medication", "medication list", "drug list"],
+      "responses": [
+        "You can manage your medications in the Reminders section. Your caregiver can set up medication reminders for you with specific times and frequencies. Would you like me to take you there?",
+        "To check your medication schedule, visit the Reminders section. If you don't see your medications listed, ask your caregiver to add them for you.",
+        "Your medication reminders are in the Reminders section. Each reminder shows the time, frequency, and status. Your caregiver manages your medication list."
+      ],
+      "actions": ["navigate:/reminders"]
+    },
+    {
+      "name": "appointment_caregiver",
+      "patterns": ["make appointment", "book appointment", "schedule appointment", "new appointment", "create appointment", "set up appointment", "caregiver appointment", "can caregiver", "caregiver schedule", "caregiver book"],
+      "responses": [
+        "Your caregiver can create and manage appointments for you from their dashboard. They can set up doctor visits, medical checkups, and other appointments. You'll see them in your Appointments section once created.",
+        "Appointment scheduling is done by your caregiver. They have a full appointments panel where they can create, confirm, and manage your medical visits. You can view your upcoming appointments on your dashboard.",
+        "Ask your caregiver to schedule the appointment from their dashboard. They can set the date, time, provider, and location. You'll get a notification once it's scheduled."
+      ]
+    },
+    {
+      "name": "general_question",
+      "patterns": ["can you help", "i have a question", "help me with", "tell me about", "explain", "what do you know", "do you know", "can you explain", "i want to know", "question for you"],
+      "responses": [
+        "I'm best at helping with ElderAssist features like emergencies, appointments, reminders, and navigating the app. I can also search the web for health information. Could you tell me more specifically what you need?",
+        "I'd love to help! I know a lot about emergencies, appointments, medications, HomeHub, and elder care. What would you like to know?",
+        "I can help with emergencies, appointments, reminders, notifications, settings, HomeHub, and health information. What would you like to know about?"
+      ]
+    }
+  ],
+  "greetings": {
+    "caregiver": [
+      "Hello! I'm your ElderAssist assistant. I can help you manage care, check on your elders, and navigate the app. What do you need?",
+      "Welcome back! How can I help you today? You can ask about emergencies, appointments, elders, or anything else."
+    ],
+    "cared": [
+      "Hello! I'm ElderAssist AI. I can help you with emergencies, appointments, reminders, and more. Just ask me anything!",
+      "Hi there! I'm here to help you stay safe and on track. What do you need help with today?"
+    ]
+  }
+}

@@ -1,0 +1,102 @@
+:root {
+  --font-sans:
+    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+
+  --bg: #f6f5f1;
+  --surface: #ffffff;
+  --surface-sunken: #f0eee8;
+  --surface-raised: #ffffff;
+  --sidebar-bg: #14232a;
+  --sidebar-bg-hover: #1d323b;
+  --sidebar-active: #24424d;
+  --sidebar-text: #aebfc6;
+  --sidebar-text-strong: #f2f7f8;
+
+  --border: #e4e0d6;
+  --border-strong: #cfc9bc;
+  --divider: #edeae2;
+
+  --text: #211d18;
+  --text-secondary: #55503f;
+  --text-muted: #857f70;
+  --text-invert: #fdfcfa;
+
+  --accent: #0e7568;
+  --accent-strong: #0b5d53;
+  --accent-soft: #e3f1ee;
+  --accent-border: #b9dcd5;
+  --on-accent: #ffffff;
+
+  --safe: #1a7f42;
+  --safe-soft: #e5f4ea;
+  --safe-border: #bfe2cc;
+
+  --attention: #9a5b06;
+  --attention-soft: #fbf1de;
+  --attention-border: #ecd9b4;
+
+  --danger: #b3261e;
+  --danger-strong: #96201a;
+  --danger-soft: #fbebe9;
+  --danger-border: #efc4bf;
+
+  --offline: #6b6f76;
+  --offline-soft: #eeeef0;
+  --offline-border: #d6d7db;
+
+  --info: #275f9e;
+  --info-soft: #e8f0fa;
+  --info-border: #c3d8ef;
+
+  --focus-ring: #0e7568;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-pill: 999px;
+
+  --shadow-xs: 0 1px 2px rgba(33, 29, 24, 0.05);
+  --shadow-sm: 0 1px 3px rgba(33, 29, 24, 0.07), 0 1px 2px rgba(33, 29, 24, 0.05);
+  --shadow-md: 0 4px 12px rgba(33, 29, 24, 0.09), 0 2px 4px rgba(33, 29, 24, 0.05);
+  --shadow-lg: 0 16px 40px rgba(20, 35, 42, 0.16), 0 4px 12px rgba(33, 29, 24, 0.08);
+
+  --hub-face: #f4f2ec;
+  --hub-bezel: #d8d4ca;
+  --hub-shell: #20262b;
+
+  --speed-fast: 140ms;
+  --speed-med: 240ms;
+
+  --topbar-h: 64px;
+}
+
+html[data-text-size='large'] {
+  font-size: 18px;
+}
+
+html[data-contrast='high'] {
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --surface-sunken: #f2f2f2;
+  --border: #565656;
+  --border-strong: #2c2c2c;
+  --divider: #c9c9c9;
+  --text: #000000;
+  --text-secondary: #1f1f1f;
+  --text-muted: #333333;
+  --accent: #00584d;
+  --accent-soft: #dff0ed;
+  --safe: #0c5c2c;
+  --safe-soft: #e2f3e8;
+  --attention: #6d4002;
+  --attention-soft: #faeed3;
+  --danger: #991512;
+  --danger-soft: #fce8e6;
+  --offline: #45484d;
+  --info: #1d4d85;
+  --shadow-xs: none;
+  --shadow-sm: none;
+  --shadow-md: 0 0 0 1px #565656;
+  --shadow-lg: 0 0 0 2px #2c2c2c;
+}

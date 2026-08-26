@@ -1,0 +1,55 @@
+import type { Reminder } from '../types';
+import { ahead } from './time';
+
+export const DEMO_REMINDERS: Reminder[] = [
+  {
+    id: 'RM-71',
+    elderId: 'eld-01',
+    elderName: 'Lakshmi Rao',
+    title: 'Doctor appointment — Sunrise Clinic',
+    timeOfDay: '9:30 AM',
+    nextTriggerAt: ahead(1080),
+    frequency: 'ONCE',
+    status: 'ACTIVE',
+  },
+  {
+    id: 'RM-72',
+    elderId: 'eld-01',
+    elderName: 'Lakshmi Rao',
+    title: 'Evening walk',
+    timeOfDay: '6:00 PM',
+    nextTriggerAt: ahead(96),
+    frequency: 'DAILY',
+    status: 'ACTIVE',
+  },
+  {
+    id: 'RM-73',
+    elderId: 'eld-02',
+    elderName: 'Raman Kumar',
+    title: 'Call daughter Sunita',
+    timeOfDay: '7:30 PM',
+    nextTriggerAt: ahead(216),
+    frequency: 'DAILY',
+    status: 'ACTIVE',
+  },
+  {
+    id: 'RM-74',
+    elderId: 'eld-02',
+    elderName: 'Raman Kumar',
+    title: 'Physiotherapy visit preparation',
+    timeOfDay: '11:00 AM',
+    nextTriggerAt: ahead(4300),
+    frequency: 'ONCE',
+    status: 'ACTIVE',
+  },
+  {
+    id: 'RM-75',
+    elderId: 'eld-03',
+    elderName: 'Devika Menon',
+    title: 'Temple visit with Meera',
+    timeOfDay: '8:00 AM',
+    nextTriggerAt: ahead(4200),
+    frequency: 'WEEKLY',
+    status: 'PAUSED',
+  },
+];
